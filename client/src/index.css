@@ -278,8 +278,24 @@ tbody tr:hover { background: var(--bg-hover); }
   .chart-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .sidebar { display: none; }
+  .sidebar { 
+    position: fixed; z-index: 100; left: -260px; top: 0; bottom: 0; 
+    display: flex; transition: left 0.25s ease; box-shadow: var(--shadow);
+  }
+  .sidebar.mobile-open { left: 0; }
+  .topbar-mobile {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px; background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .hamburger-btn { font-size: 24px; color: var(--text-primary); cursor: pointer; padding: 0; }
+  .mobile-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 90; backdrop-filter: blur(2px);
+  }
   .stat-grid { grid-template-columns: 1fr; }
   .page { padding: 16px; }
   .form-row { grid-template-columns: 1fr; }
+}
+@media (min-width: 641px) {
+  .topbar-mobile, .mobile-overlay { display: none; }
 }

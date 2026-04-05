@@ -11,7 +11,7 @@ const NavItem = ({ to, icon, label }) => (
   </NavLink>
 );
 
-export default function Sidebar() {
+export default function Sidebar({ className = '' }) {
   const { user, logout, isAdmin, isAnalyst } = useAuth();
 
   const initials = user?.name
@@ -24,7 +24,7 @@ export default function Sidebar() {
   }[user?.role] || 'var(--text-muted)';
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${className}`}>
       <div className="sidebar-logo">
         <div className="sidebar-logo-icon">Z</div>
         <div className="sidebar-logo-text">Zorv<span>yn</span></div>
